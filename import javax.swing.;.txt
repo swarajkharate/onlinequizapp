@@ -1,0 +1,117 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class QuizGUI extends JFrame implements ActionListener {
+
+    String[] questions = {
+            "Java is a ____?",
+            "Which keyword is used to inherit a class?",
+            "JVM stands for?",
+            "Which symbol is used for single line comment?",
+            "Which data type stores decimal values?"
+    };
+
+    String[][] options = {
+            {"Language", "OS", "Hardware", "Browser"},
+            {"super", "this", "extends", "implements"},
+            {"Java Virtual Machine", "Java Visual Model", "Just VM", "None"},
+            {"//", "/* */", "#", "<!-- -->"},
+            {"int", "float", "char", "boolean"}
+    };
+
+    char[] answers = {'A','C','A','A','B'};
+    int index = 0;
+    int score = 0;
+
+    JLabel questionLabel;
+    JRadioButton opt1, opt2, opt3, opt4;
+    ButtonGroup group;
+    JButton nextBtn;
+
+    public QuizGUI() {
+        setTitle("Online Quiz Application");
+        setSize(500,300);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        questionLabel = new JLabel("Question");
+        questionLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        add(questionLabel, BorderLayout.NORTH);
+
+        JPanel panel = new JPanel(new GridLayout(4,1));
+
+        opt1 = new JRadioButton();
+        opt2 = new JRadioButton();
+        opt3 = new JRadioButton();
+        opt4 = new JRadioButton();
+
+        group = new ButtonGroup();
+        group.add(opt1);
+        group.add(opt2);
+        group.add(opt3);
+        group.add(opt4);
+
+        panel.add(opt1);
+        panel.add(opt2);
+        panel.add(opt3);
+        panel.add(opt4);
+
+        add(panel, BorderLayout.CENTER);
+
+        nextBtn = new JButton("Next");
+        nextBtn.addActionListener(this);
+        add(nextBtn, BorderLayout.SOUTH);
+
+        loadQuestion();
+        setVisible(true);
+    }
+
+    void loadQuestion() {
+        if(index < questions.length){
+            questionLabel.setText((index+1) + ". " + questions[index]);
+            opt1.setText("A. " + options[index][0]);
+            opt2.setText("B. " + options[index][1]);
+            opt3.setText("C. " + options[index][2]);
+            opt4.setText("D. " + options[index][3]);
+            group.clearSelection();
+        }
+        else{
+            showResult();
+        }
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        char selected = ' ';
+
+        if(opt1.isSelected()) selected='A';
+        if(opt2.isSelected()) selected='B';
+        if(opt3.isSelected()) selected='C';
+        if(opt4.isSelected()) selected='D';
+
+        if(selected == answers[index]) score++;
+
+        index++;
+        loadQuestion();
+    }
+
+    void showResult(){
+        double percentage = ((double)score/questions.length)*100;
+
+        String result = "Your Score: " + score + "/" + questions.length +
+                "\nPercentage: " + percentage + "%";
+
+        if(percentage>=60)
+            result += "\nResult: PASS 🎉";
+        else
+            result += "\nResult: FAIL ❌";
+
+        JOptionPane.showMessageDialog(this, result);
+        System.exit(0);
+    }
+
+    public static void main(String[] args) {
+        new QuizGUI();
+    }
+}
