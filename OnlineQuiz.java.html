@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>OnlineQuiz.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+OnlineQuiz.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Scanner</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">OnlineQuiz </span><span class="s2">{</span>
+
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+
+        <span class="s1">Scanner sc </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Scanner</span><span class="s2">(</span><span class="s1">System</span><span class="s2">.</span><span class="s1">in</span><span class="s2">);</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;==================================&quot;</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;     WELCOME TO ONLINE QUIZ       &quot;</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;==================================&quot;</span><span class="s2">);</span>
+
+        <span class="s4">// Questions</span>
+        <span class="s1">String</span><span class="s2">[] </span><span class="s1">questions </span><span class="s2">= {</span>
+                <span class="s3">&quot;1. Java is a ____?&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;2. Which keyword is used to inherit a class?&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;3. JVM stands for?&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;4. Which symbol is used for single line comment in Java?&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;5. Which data type stores decimal values?&quot;</span>
+        <span class="s2">};</span>
+
+        <span class="s4">// Options (2D Array)</span>
+        <span class="s1">String</span><span class="s2">[][] </span><span class="s1">options </span><span class="s2">= {</span>
+                <span class="s2">{</span><span class="s3">&quot;A. Language&quot;</span><span class="s2">, </span><span class="s3">&quot;B. OS&quot;</span><span class="s2">, </span><span class="s3">&quot;C. Hardware&quot;</span><span class="s2">, </span><span class="s3">&quot;D. Browser&quot;</span><span class="s2">},</span>
+                <span class="s2">{</span><span class="s3">&quot;A. super&quot;</span><span class="s2">, </span><span class="s3">&quot;B. this&quot;</span><span class="s2">, </span><span class="s3">&quot;C. extends&quot;</span><span class="s2">, </span><span class="s3">&quot;D. implements&quot;</span><span class="s2">},</span>
+                <span class="s2">{</span><span class="s3">&quot;A. Java Virtual Machine&quot;</span><span class="s2">, </span><span class="s3">&quot;B. Java Visual Model&quot;</span><span class="s2">, </span><span class="s3">&quot;C. Just VM&quot;</span><span class="s2">, </span><span class="s3">&quot;D. None&quot;</span><span class="s2">},</span>
+                <span class="s2">{</span><span class="s3">&quot;A. //&quot;</span><span class="s2">, </span><span class="s3">&quot;B. /* */&quot;</span><span class="s2">, </span><span class="s3">&quot;C. #&quot;</span><span class="s2">, </span><span class="s3">&quot;D. &lt;!-- --&gt;&quot;</span><span class="s2">},</span>
+                <span class="s2">{</span><span class="s3">&quot;A. int&quot;</span><span class="s2">, </span><span class="s3">&quot;B. float&quot;</span><span class="s2">, </span><span class="s3">&quot;C. char&quot;</span><span class="s2">, </span><span class="s3">&quot;D. boolean&quot;</span><span class="s2">}</span>
+        <span class="s2">};</span>
+
+        <span class="s4">// Correct answers</span>
+        <span class="s0">char</span><span class="s2">[] </span><span class="s1">answers </span><span class="s2">= {</span><span class="s3">'A'</span><span class="s2">, </span><span class="s3">'C'</span><span class="s2">, </span><span class="s3">'A'</span><span class="s2">, </span><span class="s3">'A'</span><span class="s2">, </span><span class="s3">'B'</span><span class="s2">};</span>
+
+        <span class="s0">int </span><span class="s1">score </span><span class="s2">= </span><span class="s5">0</span><span class="s2">;</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">Starting Quiz...</span><span class="s0">\n</span><span class="s3">&quot;</span><span class="s2">);</span>
+
+        <span class="s4">// Loop through questions</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s5">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">questions</span><span class="s2">.</span><span class="s1">length</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">questions</span><span class="s2">[</span><span class="s1">i</span><span class="s2">]);</span>
+
+            <span class="s4">// print options</span>
+            <span class="s0">for </span><span class="s2">(</span><span class="s1">String opt </span><span class="s2">: </span><span class="s1">options</span><span class="s2">[</span><span class="s1">i</span><span class="s2">]) {</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">opt</span><span class="s2">);</span>
+            <span class="s2">}</span>
+
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Enter your answer (A/B/C/D): &quot;</span><span class="s2">);</span>
+            <span class="s0">char </span><span class="s1">userAns </span><span class="s2">= </span><span class="s1">sc</span><span class="s2">.</span><span class="s1">next</span><span class="s2">().</span><span class="s1">toUpperCase</span><span class="s2">().</span><span class="s1">charAt</span><span class="s2">(</span><span class="s5">0</span><span class="s2">);</span>
+
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">userAns </span><span class="s2">== </span><span class="s1">answers</span><span class="s2">[</span><span class="s1">i</span><span class="s2">]) {</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Correct Answer ✅</span><span class="s0">\n</span><span class="s3">&quot;</span><span class="s2">);</span>
+                <span class="s1">score</span><span class="s2">++;</span>
+            <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Wrong Answer ❌&quot;</span><span class="s2">);</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Correct Answer is: &quot; </span><span class="s2">+ </span><span class="s1">answers</span><span class="s2">[</span><span class="s1">i</span><span class="s2">] + </span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+
+        <span class="s4">// Final Result</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;==================================&quot;</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;           QUIZ RESULT            &quot;</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;==================================&quot;</span><span class="s2">);</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Total Questions: &quot; </span><span class="s2">+ </span><span class="s1">questions</span><span class="s2">.</span><span class="s1">length</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Correct Answers: &quot; </span><span class="s2">+ </span><span class="s1">score</span><span class="s2">);</span>
+
+        <span class="s0">double </span><span class="s1">percentage </span><span class="s2">= ((</span><span class="s0">double</span><span class="s2">) </span><span class="s1">score </span><span class="s2">/ </span><span class="s1">questions</span><span class="s2">.</span><span class="s1">length</span><span class="s2">) * </span><span class="s5">100</span><span class="s2">;</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Percentage: &quot; </span><span class="s2">+ </span><span class="s1">percentage </span><span class="s2">+ </span><span class="s3">&quot;%&quot;</span><span class="s2">);</span>
+
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">percentage </span><span class="s2">&gt;= </span><span class="s5">60</span><span class="s2">) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Result: PASS 🎉&quot;</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Result: FAIL ❌&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;==================================&quot;</span><span class="s2">);</span>
+        <span class="s1">sc</span><span class="s2">.</span><span class="s1">close</span><span class="s2">();</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
